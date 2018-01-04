@@ -1,6 +1,6 @@
 # static-template
 
-Static template project for official website with traditional technique
+Static template project for official website。
 
 静态模板项目，特别适用于官网类型，支持 SEO。
 
@@ -10,34 +10,34 @@ gulp + ejs 合并静态页模版，文件更新自动热重载。
 
 ```bash
 $ yarn install               # 安装依赖
-$ yarn start                   # 启动一个自动热重载的服务器，默认端口 3000
+$ yarn start                 # 启动一个自动热重载的服务器，默认端口 3000
 ```
 
 ## 构建打包
 
 ```bash
-$ gulp ejs                   # 合并模版，服务器启动时会自动监听文件更新执行该任务
+$ yarn build                   # 构建打包，另提供多种环境下的编译命令
+$ yarn zip                     # 创建压缩包方便部署或分发
 ```
-
-## 流程
-
-1. 模板编码，即 `templates/` 目录，页面入口以 `.html` 结尾，分支模版以 `.ejs` 结尾，没有目录结构限制，按需引入或编写新的页面模块。在这个阶段可以启动服务器 `gulp dev` 进行实时页面预览。
-
-2. 编写数据文件，分为全局数据文件 `global.json` 和页面数据文件，使用通用的 `json` 格式。全局数据文件必须放到模版根目录，一个页面对应一个同名的数据文件同级目录。数据中可以写，比如： `title：页面标题` 、`styles：依赖的样式文件路径`、 `scripts：依赖的脚本文件路径` ，随时可以根据实际情况添加新的数据项。
-
-3. 执行 `gulp ejs` 任务，生成页面到 `html/` 目录，如果之前启动了热重载服务器不需要这一步。
 
 ## 目录结构
 
 ```
 .
-├── templates                      # css 文件
-├── dist                     # 编译生成的文件目录
-├── images                   # 图像目录
-├── js                       # 
-│   └── entry                # 
-│        └── *.js            # js 文件，会自动构建
-└── origin.html              # 开发用 html 文件，打包时会生成 index.html 文件
+├── dist                      # 编译生成的文件目录
+├── src                       # 源码目录
+│   │── js                    # js 目录
+│   │    └── index.js         # js 入口文件
+│   │── less                  # less 目录
+│   │    └── index.less       # less 入口文件
+│   │── images                # image 目录
+│   └── templates             # 模版目录，模版以 `.ejs` 结尾，没有目录结构限制，按需引入或编写新的页面模块
+│        │── global.json      # 全局数据文件
+│        │── *.json           # 页面数据文件
+│        └── *.html           # 页面入口文件
+│
+│
+└── .stylelintrc             # 开发用 html 文件，打包时会生成 index.html 文件
 ```
 
 ## 其他

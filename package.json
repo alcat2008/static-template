@@ -5,9 +5,9 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp --type development dev",
-    "build": "BUILD_ENV=prod gulp --type production build",
-    "build:test": "BUILD_ENV=test gulp --type production build",
-    "build:pre": "BUILD_ENV=pre gulp --type production build",
+    "build": "BUILD_ENV=PROD gulp --type production build",
+    "build:test": "BUILD_ENV=TEST gulp --type production build",
+    "build:pre": "BUILD_ENV=PRE gulp --type production build",
     "zip": "gulp zip",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

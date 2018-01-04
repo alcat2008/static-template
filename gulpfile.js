@@ -39,7 +39,7 @@ const config = {
   js: './src/js',               // js 目录
   less: './src/less',           // less 目录
   images: './src/images',       // image 目录
-  dist: './dist',           // 生成目录
+  dist: './dist',               // 生成目录
   name: {
     revjs: 'rev-manifest-js.json',
     revcss: 'rev-manifest-css.json',
@@ -49,7 +49,7 @@ const config = {
 }
 
 const isDev = gutil.env.type !== 'production'
-const BuildEnv = process.env.BUILD_ENV || 'dev'
+const BuildEnv = process.env.BUILD_ENV || 'TEST'
 
 // 清理工作
 gulp.task('clean', function () {
