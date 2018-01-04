@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# Project files
+.DS_Store
+.idea/
+dist.zip
+dist/

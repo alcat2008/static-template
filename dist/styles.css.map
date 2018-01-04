@@ -1,1 +1,0 @@
-{"version":3,"names":[],"mappings":"","sources":["styles.css"],"sourcesContent":["html,\nbody {\n  position: relative;\n  width: 100%;\n  min-height: 100%;\n}\n@media screen {\n}\n"],"file":"styles.css"}

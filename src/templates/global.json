@@ -4,10 +4,6 @@
     "styles": [
         "//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
     ],
-    "polyfillScript": [
-        "//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js",
-        "//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"
-    ],
     "scripts": [
         "//cdn.bootcss.com/jquery/1.12.4/jquery.min.js",
         "//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"

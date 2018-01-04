@@ -1,3 +1,5 @@
+console.log('** running env:', process.env.NODE_ENV, process.env.BUILD_ENV)
+
 /* 需要请求后台时的代码
 var baseUrl = 'http://test.jcyapi.easybao.com/api/XXX' // 测试
 if (env === 'PRE') {
