@@ -1,7 +1,7 @@
 {
-  "name": "gulp-ejs-demo",
-  "version": "1.1.0",
-  "description": "",
+  "name": "static-template",
+  "version": "1.0.0",
+  "description": "Static template project for official website",
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp --type development dev",
@@ -11,7 +11,7 @@
     "zip": "gulp zip",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "yusen",
+  "author": "alcat2008",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
@@ -46,6 +46,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yscoder/gulp-ejs-demo"
+    "url": "git+https://github.com/alcat2008/static-template"
   }
 }

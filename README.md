@@ -1,6 +1,6 @@
 # static-template
 
-Static template project for official website。
+Static template project for official website
 
 静态模板项目，特别适用于官网类型，支持 SEO。
 
