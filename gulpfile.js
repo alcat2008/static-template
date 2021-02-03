@@ -5,7 +5,7 @@ const path = require('path')
 const gulp = require('gulp')
 const gutil = require('gulp-util')
 
-const browserSync = require('browser-sync')
+const browserSync = require('browser-sync').create()
 
 const clean = require('gulp-clean')
 
@@ -53,7 +53,7 @@ const BuildEnv = process.env.BUILD_ENV || 'TEST'
 
 // 清理工作
 gulp.task('clean', function () {
-	return gulp.src(config.dist, { read: false })
+	return gulp.src(config.dist, { read: false, allowEmpty: true })
 		.pipe(clean())
 })
 
@@ -115,15 +115,7 @@ gulp.task('compile:css', function() {
       failAfterError: false
     }))
     .pipe(less())
-    .pipe(postcss([
-      autoprefixer({
-        browsers: [
-          '>1%',
-          'last 4 versions',
-          'Firefox ESR',
-        ]
-      }),
-    ]))
+    .pipe(postcss([autoprefixer()]))
     // .pipe(source('styles.css'))
     .pipe(rename({ basename: 'styles' }))
     .pipe(isDev ? gutil.noop() : sourcemaps.init({ loadMaps: true }))
@@ -199,15 +191,14 @@ gulp.task('compile:html', function() {
     .pipe(gulp.dest(config.dist))
 })
 
-gulp.task('compile', ['compile:js', 'compile:css', 'compile:images'], function () {
-  return gulp.start('compile:html')
-})
-gulp.task('compile-sync', ['compile'], browserSync.reload)
+gulp.task('compile', gulp.series('compile:js', 'compile:css', 'compile:images', 'compile:html'))
+gulp.task('reload', gulp.series(function(done) {
+  browserSync.reload()
+  done()
+}))
 
 // 开发服务
-gulp.task('dev', ['clean'], function() {
-  gulp.start('compile-sync')
-
+gulp.task('dev', gulp.series('clean', 'compile', function() {
   browserSync.init({
     server: {
       baseDir: config.dist
@@ -216,17 +207,15 @@ gulp.task('dev', ['clean'], function() {
   })
 
   // 无论是数据文件更改还是模版更改都会触发页面自动重载
-  gulp.watch(config.src + '/**/*.*', ['compile-sync'])
-})
+  return gulp.watch(config.src + '/**/*.*', gulp.series('compile', 'reload'))
+}))
 
 // 构建
-gulp.task('build', ['clean'], function () {
-  return gulp.start('compile')
-})
+gulp.task('build', gulp.series('clean', 'compile'))
 
 // 打包
-gulp.task('zip', ['clean:trial'], function () {
+gulp.task('zip', gulp.series('clean:trial', function () {
   return gulp.src(config.dist + '/**/*.*')
     .pipe(zip('dist.zip'))
     .pipe(gulp.dest('./'))
-})
+}))
