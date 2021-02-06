@@ -1,6 +1,7 @@
 const BUILD_ENV = process.env.BUILD_ENV
 console.log('** running env:', BUILD_ENV)
 
+console.log('index page')
 
 /* 需要请求后台时的代码
 var baseUrl = 'http://XXX/api/XXX' // 测试
